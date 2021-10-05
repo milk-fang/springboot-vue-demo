@@ -1,0 +1,14 @@
+com\example\demo\DemoApplication.class
+com\example\demo\entity\User.class
+com\example\demo\controller\NewsController.class
+com\example\demo\config\CorsConfig.class
+com\example\demo\mapper\NewsMapper.class
+com\example\demo\controller\UserController.class
+com\example\demo\entity\Book.class
+com\example\demo\controller\BookController.class
+com\example\demo\controller\FileController.class
+com\example\demo\common\MybatisPlusConfig.class
+com\example\demo\common\Result.class
+com\example\demo\entity\News.class
+com\example\demo\mapper\BookMapper.class
+com\example\demo\mapper\UserMapper.class
