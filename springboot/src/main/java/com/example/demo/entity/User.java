@@ -11,9 +11,19 @@ public class User {
     @TableId(type = IdType.AUTO)
     private Integer id;
     private String username;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     private String password;
     private Integer age;
     private String img;
+    private String salt;
 
     public String getImg() {
         return img;
@@ -35,7 +45,15 @@ public class User {
     private String address;
     private String nickName;
     private Integer role;
+    private String email;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;

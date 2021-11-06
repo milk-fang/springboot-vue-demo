@@ -87,7 +87,8 @@ export default {
                 message: "登录成功"
               })
               sessionStorage.setItem("user", JSON.stringify(res.data))  // 缓存用户信息
-              this.$router.push("/course")  //登录成功之后进行页面的跳转，跳转到主页
+              console.log(sessionStorage.getItem('user').role)
+              this.$router.push("/article")  //登录成功之后进行页面的跳转，跳转到主页
             } else {
               this.$message({
                 type: "error",

@@ -2,9 +2,9 @@
   <div class="home" style="padding: 10px">
     <!--    功能区域-->
     <div style="margin: 10px">
-      <el-button type="primary" @click="add">新增</el-button>
-      <el-button type="primary">导入</el-button>
-      <el-button type="primary">导出</el-button>
+      <el-button type="primary" @click="add" disabled>新增</el-button>
+      <el-button type="primary" disabled>导入</el-button>
+      <el-button type="primary" disabled>导出</el-button>
     </div>
     <!--    搜索区域-->
     <div style="margin: 10px 0">
@@ -53,6 +53,7 @@
         </template>
       </el-table-column>
     </el-table>
+
     <div style="margin: 10px 0">
       <el-pagination
           v-model:currentPage="currentPage"
@@ -122,10 +123,18 @@ export default {
       form: {},
       dialogVisible: false,
       tableData: [],
+
     }
   },
   created() {
-    this.load();
+    if(sessionStorage.getItem('user')&& JSON.parse(sessionStorage.getItem('user')).role == 1){
+
+      this.load();
+    }else{
+      alert("error:权限不足！");
+      this.$router.push("/individual")
+    }
+
   },
   methods: {
     handleEdit(row) {
@@ -171,7 +180,6 @@ export default {
               message: "更新失败",
             })
           }
-
         })
 
       } else {   // 新增

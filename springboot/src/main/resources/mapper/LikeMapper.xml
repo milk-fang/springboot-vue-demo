@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LikeMapper">
+
+    <select id="findByUidAndAid" resultType="com.example.demo.entity.Like">
+         select id,user_id,comment_id total from `like`
+    where user_id = #{userId} and comment_id=#{commentId}
+    </select>
+
+    <select id="findByAid" resultType="com.example.demo.entity.Like">
+         select id,user_id,comment_id from `like`
+    where comment_id=#{commentId}
+    </select>
+
+    <select id="findByUid" resultType="com.example.demo.entity.Like">
+         select id,user_id,comment_id from `like`
+    where user_id=#{userId}
+    </select>
+
+    <insert id="insertByUidAndAid">
+        INSERT INTO `like`  ( user_id, comment_id )  VALUES  (#{userId}, #{commentId})
+    </insert>
+
+    <delete id="deleteByUidAndAid">
+    delete from `like` where user_id = #{userId} and comment_id = #{commentId}
+</delete>
+
+</mapper>

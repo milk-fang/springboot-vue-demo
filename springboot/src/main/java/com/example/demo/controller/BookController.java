@@ -7,12 +7,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.common.Result;
 import com.example.demo.entity.Book;
 import com.example.demo.mapper.BookMapper;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
-@RestController
-@RequestMapping("/book")
+@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 public class BookController {
 
     @Resource

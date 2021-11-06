@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+
+    <select id="findCommentByArticleId" parameterType="Integer" resultType="com.example.demo.vo.CommentAndUser">
+         select comment.id,content,create_time,user_id, username, img, `likes`
+         from comment
+         left join user
+         on comment.user_id = user.id
+         where comment.article_id = #{articleId}
+         ORDER BY `likes` DESC;
+    </select>
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ReportMapper">
+
+    <select id="getAllData" resultType="com.example.demo.vo.CommentAndReportedUser">
+select t3.id, t3.comment_id,t3.username,t3.reportedUsername,t3.create_time, `comment`.content, t3.reason from (
+select t1.id,t1.comment_id, t1.username,reportedUsername,t1.create_time,t1.reason from
+(select report.id,report.comment_id,`user`.username,report.create_time,report.reason from report
+ left join `user`
+ on report.user_id = `user`.id) as t1
+left JOIN
+(select report.id, report.comment_id,`user`.username as reportedUsername from report left join `user` on report.comment_id = `user`.id) as t2 on t1.id = t2.id)
+as t3
+left join `comment` on t3.comment_id = `comment`.id;
+    </select>
+
+
+</mapper>
